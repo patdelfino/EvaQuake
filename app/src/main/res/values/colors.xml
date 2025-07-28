@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <!-- Your existing custom primary, accent, and background colors -->
+        <color name="colorPrimary">#6A0DAD</color>
+        <color name="colorPrimaryDark">#4B0082</color>
+        <color name="colorAccent">#F06292</color>
+        <color name="background">#F4F1FA</color>
+
+        <!-- Standard Material Design colors (now in shades of blue/cyan) -->
+        <!-- These are used by themes and some Material Design components -->
+        <color name="blue_200">#80DEEA</color> <!-- Light Cyan -->
+        <color name="blue_500">#0077B6</color> <!-- Your preferred blue -->
+        <color name="blue_700">#004D7A</color> <!-- Darker shade of your blue -->
+        <color name="cyan_200">#4FC3F7</color> <!-- Light Blue -->
+        <color name="cyan_700">#00838F</color> <!-- Darker Cyan -->
+        <color name="black">#FF000000</color>
+        <color name="white">#FFFFFFFF</color>
+
+        <!-- Colors for your app's specific design elements -->
+        <color name="blue">#0000FF</color> <!-- Keeping this as the pure blue for specific text styling if needed -->
+        <color name="dark_grey">#333333</color>
+        <color name="hint_color">#333333</color>
+        <color name="light_purple_background">#ECE5F0</color>
+        <color name="button_blue">#0077B6</color> <!-- Your main button blue -->
+
+        <!-- Colors for the Bottom Navigation View -->
+        <color name="bottom_nav_background_color">#FFFFFF</color>
+        <color name="bottom_nav_selected_item_color">#0077B6</color> <!-- Updated to the new blue -->
+        <color name="bottom_nav_unselected_item_color">#808080</color>
+
+        <!-- The <selector> block has been removed from here. -->
+        <!-- It must be in its own file in res/color/ -->
+
+</resources>

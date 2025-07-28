@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ECE5F0"
+    android:padding="32dp">
+
+    <!-- "Welcome Back" Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Welcome_back"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Student/Employee Number EditText (Updated ID and inputType) -->
+    <EditText
+        android:id="@+id/login_student_employee_number"
+        android:autofillHints=""
+        android:hint="@string/hint_student_employee_number"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edittext_white"
+        android:padding="12dp"
+        android:textColor="@android:color/black"
+        android:textColorHint="@color/hint_color"
+        android:layout_marginBottom="16dp"
+        android:minHeight="48dp" /> <!-- Ensure minimum touch target size -->
+
+    <!-- Password EditText -->
+    <EditText
+        android:id="@+id/login_password"
+        android:autofillHints=""
+        android:hint="@string/hint_password_login"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edittext_white"
+        android:padding="12dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/black"
+        android:textColorHint="@color/hint_color"
+        android:minHeight="48dp" /> <!-- Ensure minimum touch target size -->
+
+    <!-- Login Button (Updated ID and styling) -->
+    <Button
+        android:id="@+id/button_login"
+        android:text="@string/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/blue"
+        android:textColor="@android:color/white"
+        android:minHeight="50dp"
+        android:textSize="18sp"
+        tools:ignore="VisualLintButtonSize" />
+
+    <!-- Register Redirect Text (Updated ID and styling) -->
+    <TextView
+        android:id="@+id/registration_redirect_text"
+        android:text="@string/registration_redirect_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/dark_grey"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:minHeight="48dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:gravity="center" /> <!-- Ensure minimum touch target size and center text -->
+</LinearLayout>

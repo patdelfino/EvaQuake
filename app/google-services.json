@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "451558521041",
+    "project_id": "evaquake-ac22d",
+    "storage_bucket": "evaquake-ac22d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451558521041:android:15b32a18d7bff965e9adf0",
+        "android_client_info": {
+          "package_name": "com.example.evaquake"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiy-UE3GxHFyM8QoJAAwR3wS_0NbPJHSQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

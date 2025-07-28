@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ECE5F0"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🌍 About Earthquakes"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#3F51B5"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Section: What is an Earthquake -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📌 What is an Earthquake?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="An earthquake is the sudden shaking of the ground caused by movements within the Earth's crust or volcanic activity. These vibrations result from the release of energy stored in rocks due to stress from tectonic forces."
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Placeholder for Image -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/earthquake_example"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Section: Causes -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🌋 What Causes Earthquakes?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Most earthquakes are caused by the sudden release of built-up stress along geological faults. Tectonic plates are always moving, and when they grind against each other, energy builds up until it releases as seismic waves. Other causes include volcanic eruptions and human activities such as mining or underground explosions."
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Section: Seismic Waves -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📈 Seismic Waves"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Seismic waves are the energy waves that travel through the Earth and are recorded by seismographs. There are three main types:\n\n• P-waves (Primary) – fastest and travel through solids, liquids, and gases.\n• S-waves (Secondary) – slower, only travel through solids.\n• Surface waves – cause the most damage and move along the Earth’s surface."
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Placeholder for seismic waves image -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/seismic_waves_pic"
+            android:scaleType="centerInside"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Section: Measuring Earthquakes -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📏 Measuring Earthquakes"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Earthquakes are measured using instruments called seismometers. The strength is recorded on the Richter or Moment Magnitude scale (Mw), while the effects on people and structures are described using the Modified Mercalli Intensity (MMI) scale."
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Section: Earthquake Preparedness -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="✅ Earthquake Preparedness Tips"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Know evacuation routes.\n• Secure furniture and breakable objects.\n• Prepare a go-bag with essentials.\n• Drop, Cover, and Hold On during an earthquake.\n• Follow school or home emergency drills."
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp" />
+    </LinearLayout>
+</ScrollView>

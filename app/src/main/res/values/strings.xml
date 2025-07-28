@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Evaquake</string>
+
+    <!-- REGISTRATION FORM LAYOUTS -->
+    <string-array name="user_types_array">
+        <item>Select User Type</item>
+        <item>Student</item>
+        <item>Employee</item>
+        <item>Admin</item>
+        <item>Other</item>
+    </string-array>
+
+    <string name="select_user_type_default">Select User Type</string>
+    <string name="create_account_title">Create Account</string>
+
+    <!-- Registration EditText hints -->
+    <string name="hint_full_name">Full Name (enter your full name)</string>
+    <string name="hint_student_employee_number">Student/Employee Number</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+
+    <!-- Register button and prompt -->
+    <string name="button_register">Register</string>
+    <string name="login_redirect_text">Already have an account? Login</string>
+
+    <!-- Toast messages -->
+    <string name="toast_fill_all_fields">Please fill in all fields and select a user type</string>
+    <string name="toast_passwords_do_not_match">Passwords do not match</string>
+    <string name="toast_account_created">Account created</string>
+
+    <!-- LOGIN FORM LAYOUTS -->
+    <string name="Welcome_back">Welcome Back!</string>
+    <string name="hint_email_login">Student/Employee Number</string>
+    <string name="hint_password_login">Password</string>
+    <string name="registration_redirect_text">Don’t have an account? Register</string>
+    <string name="button_login">Login</string>
+
+    <!-- Content Descriptions for Icons -->
+    <string name="desc_safety_guides_icon">Safety Guides Icon</string>
+    <string name="desc_qr_scan_icon">QR Scan Icon</string>
+    <string name="desc_emergency_icon">Emergency Icon</string>
+    <string name="desc_about_earthquakes_icon">About Earthquakes Icon</string>
+    <string name="desc_manage_schedule_icon">Manage Schedule Icon</string> <!-- NEW STRING ADDED HERE -->
+</resources>

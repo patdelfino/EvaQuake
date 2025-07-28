@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/nav_3d_model"
+        android:icon="@drawable/model"
+        android:title="3D Model" />
+
+    <item
+        android:id="@+id/nav_ar_guide"
+        android:icon="@drawable/ar"
+        android:title="AR Guide" />
+
+    <item
+        android:id="@+id/nav_status"
+        android:icon="@drawable/attendance_checker"
+        android:title="Status" />
+
+    <item
+        android:id="@+id/nav_safety"
+        android:icon="@drawable/tips"
+        android:title="Tips" />
+
+</menu>

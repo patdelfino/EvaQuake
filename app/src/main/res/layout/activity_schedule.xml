@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F4F1FA"
+    tools:context=".ScheduleActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manage Weekly Schedule"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:layout_marginBottom="24dp"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- Day Selector Spinner -->
+    <Spinner
+        android:id="@+id/day_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/days_of_week"
+        android:padding="12dp"
+        android:background="@drawable/rounded_edittext_white"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Schedule Entry Input Fields -->
+    <EditText
+        android:id="@+id/subject_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Subject Name (e.g., Math)"
+        android:padding="12dp"
+        android:background="@drawable/rounded_edittext_white"
+        android:layout_marginBottom="12dp"
+        android:inputType="textCapWords" />
+
+    <!-- New: Room Number Input -->
+    <EditText
+        android:id="@+id/room_number_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Room Number (e.g., 305)"
+        android:padding="12dp"
+        android:background="@drawable/rounded_edittext_white"
+        android:layout_marginBottom="12dp"
+        android:inputType="text" />
+
+    <!-- New: Teacher Name Input -->
+    <EditText
+        android:id="@+id/teacher_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Teacher Name (e.g., Mr. San Juan)"
+        android:padding="12dp"
+        android:background="@drawable/rounded_edittext_white"
+        android:layout_marginBottom="12dp"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/start_time_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Start Time (HH:MM - 24hr format)"
+        android:padding="12dp"
+        android:background="@drawable/rounded_edittext_white"
+        android:layout_marginBottom="12dp"
+        android:inputType="time"
+        android:focusable="false"
+        android:clickable="true" /> <!-- Make clickable to open time picker -->
+
+    <EditText
+        android:id="@+id/end_time_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="End Time (HH:MM - 24hr format)"
+        android:padding="12dp"
+        android:background="@drawable/rounded_edittext_white"
+        android:layout_marginBottom="24dp"
+        android:inputType="time"
+        android:focusable="false"
+        android:clickable="true" /> <!-- Make clickable to open time picker -->
+
+    <Button
+        android:id="@+id/add_schedule_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add to Schedule"
+        android:backgroundTint="@color/button_blue"
+        android:textColor="@android:color/white"
+        android:minHeight="50dp"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/view_schedule_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Full Schedule"
+        android:backgroundTint="@color/dark_grey"
+        android:textColor="@android:color/white"
+        android:minHeight="50dp"
+        android:textSize="18sp" />
+
+    <!-- RecyclerView to display the current day's schedule (optional, for advanced view) -->
+    <!-- <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/schedule_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp" /> -->
+
+</LinearLayout>
