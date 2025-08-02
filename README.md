@@ -1,55 +1,42 @@
-EvaQuake-App
-Project Overview
-The primary objective of this project is to create EvaQuake, an application designed to help enhance earthquake preparedness as well as the response and situational awareness of Victorino Mapa High School students.
+**EvaQuake-App**
 
-Key Features & Objectives
+**Project Overview**
+
+The primary objective of this project is to create EvaQuake, an application designed to help enhance earthquake preparedness, response, and situational awareness for Victorino Mapa High School students.
+
+
+**Key Features & Objectives**
+
 The application is being developed with the following specific goals:
+- **Augmented Reality (AR) Evacuation Navigation:** This feature uses QR code markers as AR anchors to provide real-time directional cues, visual overlays for hazard zones, and safe routes toward exits within the school.
+- **Interactive 3D School Model:** A detailed 3D model of the school's indoor layout will highlight key areas like exits, stairwells, and hazard-prone zones. It will also embed earthquake preparedness learning materials and safety tips.
+- **Student Status and Attendance Monitoring**: An integrated feature will allow teachers and administrators to track and update students’ conditions as “safe,” “missing,” or “in danger” during earthquake drills and real-world events.
 
-Augmented Reality (AR) Evacuation Navigation: Implement an AR evacuation navigation system using QR code markers as AR anchors placed within the school. The application will provide real-time directional cues, visual overlays for hazard zones, and safe routes toward exits.
+**Technologies Used**
 
-Interactive 3D School Model: Design and develop an interactive 3D model of Victorino Mapa High School, detailing its indoor layout, rooms, and facilities. The model will include marked legends to highlight key areas such as exits, stairwells, and hazard-prone zones. It will also embed earthquake preparedness learning materials and visual safety tips to support instructional goals.
+The project leverages the following technologies:
+- Android Studio: The official Integrated Development Environment (IDE) for Android app development.
+- Java/Kotlin: The core programming languages for the app's logic.
+- Node.js: The backend server environment for handling API requests.
+- ARCore/ARKit: For implementing the Augmented Reality functionalities.
+- 3D Modeling Software: Used to create the interactive school layout.
+- Firebase/Firestore: Utilized for real-time data synchronization and student monitoring.
+- Git/GitHub: Employed for version control and collaborative development.
 
-Student Status and Attendance Monitoring: Integrate a feature that allows teachers and administrators to track and update students’ conditions as “safe,” “missing,” or “in danger” during earthquake drills and real-world events.
+**Getting Started**
 
-Technologies Used
-Android Studio: The official IDE for Android development.
+To get a local copy of the project up and running, follow these simple steps:
+- Clone the repository: git clone https://github.com/your-username/EvaQuake-App.git
+- Open in Android Studio:
+- Launch Android Studio.
+- Select File > Open.
+- Navigate to and open the cloned project folder.
 
-Java/Kotlin: The primary programming languages for the app's logic.
+**Contributing**
 
-Node.js: The backend server environment for handling API requests and server-side logic.
-
-ARCore/ARKit: For implementing the Augmented Reality features.
-
-3D Modeling Software: For creating the interactive school layout.
-
-Firebase/Firestore: For real-time data synchronization and student monitoring.
-
-Git/GitHub: For version control and collaboration.
-
-Getting Started
-To get a local copy of the project up and running, follow these steps:
-
-Clone the repository:
-
-git clone https://github.com/your-username/EvaQuake-App.git
-
-Open in Android Studio:
-
-Open Android Studio.
-
-Select File > Open.
-
-Navigate to the cloned repository folder and open the project.
-
-Contributing
-We welcome contributions to this project! Please follow these steps to contribute:
-
-Fork the repository.
-
-Create a new branch (git checkout -b feature/new-feature).
-
-Make your changes and commit them (git commit -m 'Add new feature').
-
-Push to the branch (git push origin feature/new-feature).
-
-Create a Pull Request.
+To contribute to this project, please follow these steps:
+- Fork the repository.
+- Create a new branch (git checkout -b feature/new-feature).
+- Make your changes and commit them (git commit -m 'Add new feature').
+- Push your changes to the new branch (git push origin feature/new-feature).
+- Create a Pull Request to merge your changes.
