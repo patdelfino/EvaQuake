@@ -29,13 +29,13 @@
                 android:id="@+id/welcome_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Welcome, Juan!"
-                android:textSize="28sp"
+                android:text="Welcome!"
+                android:fontFamily="@font/helvetica_neue_family"
                 android:textStyle="bold"
+                android:textSize="28sp"
                 android:textColor="#000080"
                 android:layout_marginTop="0dp"
-                android:layout_marginBottom="4dp"
-                android:fontFamily="@font/helveticaneuemedium" />
+                android:layout_marginBottom="4dp"/>
 
             <!-- Current Subject Display -->
             <TextView
@@ -45,7 +45,7 @@
                 android:text="Current Subject: Not Set"
                 android:textSize="18sp"
                 android:textColor="#333333"
-                android:fontFamily="@font/helveticaneuemedium"
+                android:fontFamily="@font/helvetica_neue_medium"
                 android:layout_marginBottom="4dp" />
 
             <TextView
@@ -56,7 +56,7 @@
                 android:textSize="18sp"
                 android:textColor="#333333"
                 android:layout_marginBottom="40dp"
-                android:fontFamily="@font/helveticaneuemedium" />
+                android:fontFamily="@font/helvetica_neue_medium" />
         </LinearLayout>
 
         <!-- Feature Cards (now arranged vertically with descriptions) -->
@@ -103,14 +103,14 @@
                             android:textColor="@color/dark_grey"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            android:fontFamily="@font/helveticaneuemedium" />
+                            android:fontFamily="@font/helvetica_neue_medium" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Learn essential tips and procedures for earthquake safety."
                             android:textColor="@color/dark_grey"
                             android:textSize="14sp"
-                            android:fontFamily="@font/helveticaneuemedium" />
+                            android:fontFamily="@font/helvetica_neue_medium" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -151,14 +151,14 @@
                             android:textColor="@color/dark_grey"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            android:fontFamily="@font/helveticaneuemedium" />
+                            android:fontFamily="@font/helvetica_neue_medium" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Understand the science behind earthquakes and their impact."
                             android:textColor="@color/dark_grey"
                             android:textSize="14sp"
-                            android:fontFamily="@font/helveticaneuemedium" />
+                            android:fontFamily="@font/helvetica_neue_medium" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -199,14 +199,14 @@
                             android:textColor="@color/dark_grey"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            android:fontFamily="@font/helveticaneuemedium" />
+                            android:fontFamily="@font/helvetica_neue_medium" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Quickly find your way around the building during drills or emergencies."
                             android:textColor="@color/dark_grey"
                             android:textSize="14sp"
-                            android:fontFamily="@font/helveticaneuemedium" />
+                            android:fontFamily="@font/helvetica_neue_medium" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -247,14 +247,14 @@
                             android:textColor="@color/dark_grey"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            android:fontFamily="@font/helveticaneuemedium" />
+                            android:fontFamily="@font/helvetica_neue_medium" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Access critical contact numbers and emergency procedures."
                             android:textColor="@color/dark_grey"
                             android:textSize="14sp"
-                            android:fontFamily="@font/helveticaneuemedium" />
+                            android:fontFamily="@font/helvetica_neue_medium" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -296,14 +296,14 @@
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:gravity="center"
-                            android:fontFamily="@font/helveticaneuemedium" />
+                            android:fontFamily="@font/helvetica_neue_medium" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Set up your weekly class schedule and view your current subject."
                             android:textColor="@color/dark_grey"
                             android:textSize="14sp"
-                            android:fontFamily="@font/helveticaneuemedium" />
+                            android:fontFamily="@font/helvetica_neue_medium" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

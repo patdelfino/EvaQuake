@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Regular/Medium weight -->
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/helvetica_neue_medium" /> <!-- Correctly points to helveticaneuemedium.otf -->
+
+    <!-- Bold weight -->
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="700"
+        android:font="@font/helvetica_neue_bold" /> <!-- Correctly points to helveticaneuebold.ttf -->
+
+    <!-- You can add italic, light, etc., if you have those font files -->
+</font-family>

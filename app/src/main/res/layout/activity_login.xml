@@ -1,78 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ECE5F0"
-    android:padding="32dp">
+    android:background="@color/light_beige_bg"
+    tools:context=".LoginActivity">
 
-    <!-- "Welcome Back" Title -->
+    <!-- Back Button/Text - Placed directly on the light_beige_bg -->
     <TextView
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back_button_text"
+        android:textColor="@color/back_button_text"
+        android:textSize="16sp"
+        android:padding="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/helvetica_neue_family"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- "Welcome Back!" Title - Placed directly on the light_beige_bg -->
+    <TextView
+        android:id="@+id/welcome_back_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Welcome_back"
-        android:textSize="32sp"
+        android:textColor="@color/dark_grey"
+        android:textSize="36sp"
         android:textStyle="bold"
-        android:textColor="#333333"
-        android:layout_marginBottom="32dp" />
+        android:fontFamily="@font/helvetica_neue_family"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Student/Employee Number EditText (Updated ID and inputType) -->
-    <EditText
-        android:id="@+id/login_student_employee_number"
-        android:autofillHints=""
-        android:hint="@string/hint_student_employee_number"
-        android:inputType="number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext_white"
-        android:padding="12dp"
-        android:textColor="@android:color/black"
-        android:textColorHint="@color/hint_color"
-        android:layout_marginBottom="16dp"
-        android:minHeight="48dp" /> <!-- Ensure minimum touch target size -->
-
-    <!-- Password EditText -->
-    <EditText
-        android:id="@+id/login_password"
-        android:autofillHints=""
-        android:hint="@string/hint_password_login"
-        android:inputType="textPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext_white"
-        android:padding="12dp"
+    <!-- Main Graphic (Cube/Phone) - Placed directly on the light_beige_bg -->
+    <ImageView
+        android:id="@+id/main_graphic_login"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/main_graphicc"
+        android:contentDescription="Main graphic"
         android:layout_marginTop="16dp"
-        android:textColor="@android:color/black"
-        android:textColorHint="@color/hint_color"
-        android:minHeight="48dp" /> <!-- Ensure minimum touch target size -->
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_back_title" />
 
-    <!-- Login Button (Updated ID and styling) -->
-    <Button
-        android:id="@+id/button_login"
-        android:text="@string/button_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/blue"
-        android:textColor="@android:color/white"
-        android:minHeight="50dp"
-        android:textSize="18sp"
-        tools:ignore="VisualLintButtonSize" />
-
-    <!-- Register Redirect Text (Updated ID and styling) -->
-    <TextView
-        android:id="@+id/registration_redirect_text"
-        android:text="@string/registration_redirect_text"
+    <!-- Guideline for the top of the blue content section -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/dark_grey"
-        android:layout_marginTop="24dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:minHeight="48dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:gravity="center" /> <!-- Ensure minimum touch target size and center text -->
-</LinearLayout>
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" /> <!-- Adjust this percentage to control the split point -->
+
+    <!-- Blue Card Container (the main blue area with rounded top) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/blue_card_container_login"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/blue_rounded_top_card_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top_content">
+
+        <!-- Inner LinearLayout for Input Fields and Button -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            app:layout_constraintVertical_bias="0.1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <!-- Student/Employee Number EditText -->
+            <EditText
+                android:id="@+id/login_student_employee_number"
+                android:hint="@string/hint_student_employee_number"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_background"
+                android:padding="16dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/dark_grey"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:minHeight="56dp" />
+
+            <!-- Password EditText -->
+            <EditText
+                android:id="@+id/login_password"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_background"
+                android:padding="16dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/dark_grey"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:minHeight="56dp" />
+
+            <!-- Sign In Button -->
+            <Button
+                android:id="@+id/button_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/button_login"
+                android:textColor="@color/button_text_color"
+                android:background="@drawable/rounded_background"
+                android:backgroundTint="@color/background"
+                android:minHeight="56dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/helvetica_neue_family" />
+
+        </LinearLayout>
+
+        <!-- Redirect to Registration -->
+        <TextView
+            android:id="@+id/registration_redirect_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_account_redirect_text"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:fontFamily="@font/helvetica_neue_family"
+            android:paddingBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

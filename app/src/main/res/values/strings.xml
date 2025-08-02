@@ -2,45 +2,86 @@
 <resources>
     <string name="app_name">Evaquake</string>
 
-    <!-- REGISTRATION FORM LAYOUTS -->
+    <!-- Login screen strings -->
+    <string name="back_button_text">Back</string>
+    <string name="Welcome_back">Welcome Back!</string>
+    <string name="hint_student_employee_number">Student/Employee Number</string>
+    <string name="hint_password">Password</string>
+    <string name="button_login">Sign In</string>
+    <string name="create_account_redirect_text">Don\'t have an account? Sign Up</string>
+
+    <!-- Registration screen strings -->
+    <string name="create_an_account">Create an Account</string>
+    <string name="hint_full_name">Full Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="i_agree_text">I agree to the</string>
+    <string name="terms_and_conditions_link">Terms and Conditions</string>
+    <string name="button_register">Sign Up</string>
+    <string name="login_redirect_text">Already have an account? Sign In</string>
+    <string name="select_user_type_default">Select User Type</string>
+    <string name="select_user_type_prompt">Choose your user type</string>
+    <string name="hint_grade">Grade</string>
+    <string name="hint_room">Room</string>
+
+    <!-- Toasts and error messages from LoginActivity.kt -->
+    <string name="toast_fill_all_fields">Please fill in all fields.</string>
+    <string name="toast_passwords_do_not_match">Passwords do not match.</string>
+    <string name="toast_account_created">Account created successfully!</string>
+    <string name="toast_agree_terms_and_conditions">Please agree to the terms and conditions.</string>
+
+    <!-- Landing screen strings (added from new errors) -->
+    <string name="landing_hi_there_title">Hi there!</string>
+    <string name="landing_i_have_account_button">I already have an account</string>
+    <string name="landing_create_account_button">Create an account</string>
+
+    <!-- Home fragment content descriptions (added from new errors) -->
+    <string name="desc_safety_guides_icon">Safety Guides Icon</string>
+    <string name="desc_about_earthquakes_icon">About Earthquakes Icon</string>
+    <string name="desc_qr_scan_icon">QR Scan Icon</string>
+    <string name="desc_emergency_icon">Emergency Contact Icon</string>
+    <string name="desc_manage_schedule_icon">Manage Schedule Icon</string>
+
+    <!-- User types for the spinner -->
     <string-array name="user_types_array">
-        <item>Select User Type</item>
+        <item>@string/select_user_type_default</item>
         <item>Student</item>
-        <item>Employee</item>
-        <item>Admin</item>
-        <item>Other</item>
+        <item>Teacher</item>
     </string-array>
 
-    <string name="select_user_type_default">Select User Type</string>
-    <string name="create_account_title">Create Account</string>
+    <!-- Terms and Conditions Dialog -->
+    <string name="terms_and_conditions_title">EvaQuake – Terms and Conditions</string>
+    <string name="ok_button">OK</string>
 
-    <!-- Registration EditText hints -->
-    <string name="hint_full_name">Full Name (enter your full name)</string>
-    <string name="hint_student_employee_number">Student/Employee Number</string>
-    <string name="hint_email">Email</string>
-    <string name="hint_password">Password</string>
-    <string name="hint_confirm_password">Confirm Password</string>
-
-    <!-- Register button and prompt -->
-    <string name="button_register">Register</string>
-    <string name="login_redirect_text">Already have an account? Login</string>
-
-    <!-- Toast messages -->
-    <string name="toast_fill_all_fields">Please fill in all fields and select a user type</string>
-    <string name="toast_passwords_do_not_match">Passwords do not match</string>
-    <string name="toast_account_created">Account created</string>
-
-    <!-- LOGIN FORM LAYOUTS -->
-    <string name="Welcome_back">Welcome Back!</string>
-    <string name="hint_email_login">Student/Employee Number</string>
-    <string name="hint_password_login">Password</string>
-    <string name="registration_redirect_text">Don’t have an account? Register</string>
-    <string name="button_login">Login</string>
-
-    <!-- Content Descriptions for Icons -->
-    <string name="desc_safety_guides_icon">Safety Guides Icon</string>
-    <string name="desc_qr_scan_icon">QR Scan Icon</string>
-    <string name="desc_emergency_icon">Emergency Icon</string>
-    <string name="desc_about_earthquakes_icon">About Earthquakes Icon</string>
-    <string name="desc_manage_schedule_icon">Manage Schedule Icon</string> <!-- NEW STRING ADDED HERE -->
+    <!-- The actual content of the Terms and Conditions -->
+    <string name="terms_and_conditions_content">
+        **Effective Date: [Insert Date]**
+        \n\nBy registering for and using the EvaQuake mobile application, you agree to the following terms and conditions. Please read carefully.
+        \n\n**1. Purpose of the App**
+        \n\nEvaQuake is intended for educational and training use only within Victorino Mapa High School. It includes a 3D model of the school, AR evacuation simulations, and student status tracking for earthquake drills.
+        \n\n**2. Eligibility**
+        \n\nOnly authorized students, teachers, and school personnel may register. A valid Android device and school-issued ID or code are required to access the app.
+        \n\n**3. User Responsibilities**
+        \n\nYou agree to:
+        \n* Provide accurate registration information.
+        \n* Use the app only for earthquake preparedness training.
+        \n* Follow all safety protocols during drills.
+        \n* Keep your account secure and confidential.
+        \n* Respect school property and QR markers used in AR activities.
+        \n\n**4. Data Collection and Privacy**
+        \n\nEvaQuake collects limited data:
+        \n* Name, grade level, and section
+        \n* Drill participation status (safe, missing, in danger)
+        \n* Device location during drills (if enabled)
+        \n* Basic usage logs for system improvement
+        \n\nAll data is used solely for educational and safety purposes within the school and will not be shared with third parties without consent.
+        \n\n**5. Limitations and Disclaimers**
+        \n\nEvaQuake does not provide real-time seismic alerts and should not be relied on during actual emergencies. It is a simulation and learning tool only. The app is provided "as is," and the developers are not responsible for data loss, technical issues, or device damage.
+        \n\n**6. Intellectual Property**
+        \n\nAll app content, including models and materials, is the property of the developers and Victorino Mapa High School. Copying, distributing, or altering any part of the app without permission is prohibited.
+        \n\n**7. Account Suspension or Termination**
+        \n\nViolations such as misuse, disruption of drills, or falsified information may result in account suspension or permanent removal by school authorities.
+        \n\n**8. Changes to Terms**
+        \n\nTerms may be updated periodically. Continued use of the app indicates acceptance of the latest version.
+    </string>
 </resources>

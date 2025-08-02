@@ -51,7 +51,6 @@
         android:layout_gravity="bottom|center_horizontal"
         android:layout_margin="16dp"
         android:src="@drawable/main_menu"
-        app:backgroundTint="@color/button_blue"
         app:fabSize="normal"
         android:contentDescription="Go to Options"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Fab" />

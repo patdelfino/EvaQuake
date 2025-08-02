@@ -1,151 +1,290 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ECE5F0"
-    android:padding="32dp">
+    android:fillViewport="true">
 
-    <!-- "Create account" Title -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/create_account_title"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="#333333">
-
-    </TextView>
-
-    <!-- Full Name EditText -->
-    <EditText
-        android:id="@+id/register_full_name"
-        android:hint="@string/hint_full_name"
-        android:inputType="textPersonName"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext_white"
-        android:padding="12dp"
-        android:textColor="@android:color/black"
-        android:textColorHint="@color/hint_color"
-        android:layout_marginBottom="16dp" />
+        android:background="#F0E5D7"
+        tools:context=".RegisterActivity">
 
-    <!-- Student/Employee Number EditText -->
-    <EditText
-        android:id="@+id/register_student_employee_number"
-        android:hint="@string/hint_student_employee_number"
-        android:inputType="number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext_white"
-        android:padding="12dp"
-        android:textColor="@android:color/black"
-        android:textColorHint="@color/hint_color"
-        android:layout_marginBottom="16dp" />
+        <!-- Top Section - "Back" Text -->
+        <TextView
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/back_button_text"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- User Type Spinner (Dropdown) -->
-    <Spinner
-        android:id="@+id/register_user_type_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext_white"
-        android:padding="8dp"
-        android:entries="@array/user_types_array"
-        android:layout_marginBottom="16dp" />
+        <!-- Header - "Create an Account" Text -->
+        <TextView
+            android:id="@+id/create_an_account_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/helvetica_neue_family"
+            android:text="@string/create_an_account"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/back_button" />
 
-    <!-- NEW: Grade EditText -->
-    <EditText
-        android:id="@+id/register_grade"
-        android:hint="Grade (e.g., 8)"
-        android:inputType="number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext_white"
-        android:padding="12dp"
-        android:textColor="@android:color/black"
-        android:textColorHint="@color/hint_color"
-        android:layout_marginBottom="16dp" />
+        <!-- Logo Image - Using a placeholder for now -->
+        <ImageView
+            android:id="@+id/register_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/main_graphicc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/create_an_account_title"
+            tools:ignore="ContentDescription" />
 
-    <!-- NEW: Room EditText -->
-    <EditText
-        android:id="@+id/register_room"
-        android:hint="Room Number (e.g., 305)"
-        android:inputType="text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext_white"
-        android:padding="12dp"
-        android:textColor="@android:color/black"
-        android:textColorHint="@color/hint_color"
-        android:layout_marginBottom="16dp" />
+        <!-- Cloud-like background at the bottom -->
+        <View
+            android:id="@+id/cloud_bg"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/cloud_shape_background"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-    <!-- Email EditText (from previous version, re-ordered) -->
-    <EditText
-        android:id="@+id/register_email"
-        android:hint="@string/hint_email"
-        android:inputType="textEmailAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext_white"
-        android:padding="12dp"
-        android:textColor="@android:color/black"
-        android:textColorHint="@color/hint_color"
-        android:layout_marginBottom="16dp" />
+        <!-- All Input Fields, Checkbox, and Button container -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/form_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/blue_rounded_top_card_background"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:paddingTop="80dp"
+            android:paddingBottom="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_image">
 
-    <!-- Password EditText -->
-    <EditText
-        android:id="@+id/register_password"
-        android:hint="@string/hint_password"
-        android:inputType="textPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_edittext_white"
-        android:padding="12dp"
-        android:textColor="@android:color/black"
-        android:textColorHint="@color/hint_color"
-        android:layout_marginBottom="16dp" />
+            <!-- Full Name -->
+            <EditText
+                android:id="@+id/full_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext_white"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:hint="@string/hint_full_name"
+                android:inputType="textPersonName"
+                android:autofillHints="name"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textColorHint="#999999"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Confirm Password EditText -->
-    <EditText
-        android:id="@+id/register_confirm_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:autofillHints=""
-        android:background="@drawable/rounded_edittext_white"
-        android:hint="@string/hint_confirm_password"
-        android:inputType="textPassword"
-        android:padding="12dp"
-        android:textColor="@android:color/black"
-        android:textColorHint="@color/hint_color" />
+            <!-- Student/Employee Number -->
+            <EditText
+                android:id="@+id/student_employee_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_edittext_white"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:hint="@string/hint_student_employee_number"
+                android:inputType="number"
+                android:autofillHints="username"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textColorHint="#999999"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/full_name" />
 
-    <!-- Register Button -->
-    <Button
-        android:id="@+id/register_button"
-        android:text="@string/button_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/button_blue"
-        android:textColor="@android:color/white"
-        android:minHeight="50dp"
-        android:textSize="18sp" />
+            <!-- User Type Dropdown (Spinner) -->
+            <Spinner
+                android:id="@+id/item1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_edittext_white"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:entries="@array/user_types_array"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:prompt="@string/select_user_type_prompt"
+                android:spinnerMode="dropdown"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/student_employee_number" />
 
-    <!-- Login TextView (Wrapped in LinearLayout for better centering and touch target) -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:layout_marginTop="24dp">
-    <TextView
-        android:id="@+id/login_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="@string/login_redirect_text"
-        android:textColor="#333333"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp" />
-</LinearLayout>
-    </LinearLayout>
+            <!-- Grade -->
+            <EditText
+                android:id="@+id/grade"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_edittext_white"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:hint="@string/hint_grade"
+                android:inputType="text"
+                android:autofillHints="none"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textColorHint="#999999"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item1" />
+
+            <!-- Room Number -->
+            <EditText
+                android:id="@+id/room"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_edittext_white"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:hint="@string/hint_room"
+                android:inputType="text"
+                android:autofillHints="none"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textColorHint="#999999"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/grade" />
+
+            <!-- Email -->
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_edittext_white"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:hint="@string/hint_email"
+                android:inputType="textEmailAddress"
+                android:autofillHints="emailAddress"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textColorHint="#999999"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/room" />
+
+            <!-- Password -->
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_edittext_white"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:autofillHints="newPassword"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textColorHint="#999999"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email" />
+
+            <!-- Confirm Password -->
+            <EditText
+                android:id="@+id/confirm_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_edittext_white"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:hint="@string/hint_confirm_password"
+                android:inputType="textPassword"
+                android:autofillHints="newPassword"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textColorHint="#999999"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password" />
+
+            <!-- Terms and Conditions Checkbox -->
+            <CheckBox
+                android:id="@+id/terms_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:text="@string/i_agree_text"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
+
+            <TextView
+                android:id="@+id/terms_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:text="@string/terms_and_conditions_link"
+                android:textColor="#FFFFFF"
+                android:textStyle="italic"
+                android:minHeight="48dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="showTermsAndConditionsDialog"
+                app:layout_constraintBottom_toBottomOf="@+id/terms_checkbox"
+                app:layout_constraintStart_toEndOf="@+id/terms_checkbox"
+                app:layout_constraintTop_toTopOf="@+id/terms_checkbox" />
+
+            <!-- Sign Up Button -->
+            <Button
+                android:id="@+id/sign_up_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="#D6D6D6"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:text="@string/button_register"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:cornerRadius="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms_text" />
+
+            <!-- New "Log In" redirect link -->
+            <TextView
+                android:id="@+id/login_redirect_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:minHeight="48dp"
+                android:minWidth="48dp"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:text="@string/login_redirect_text"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_button" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

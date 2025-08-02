@@ -1,139 +1,150 @@
 package com.example.evaquake
 
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.ForegroundColorSpan
-import android.text.style.StyleSpan
-import android.widget.*
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import com.google.firebase.auth.FirebaseAuth // Import FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore // Import FirebaseFirestore
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
+import androidx.appcompat.app.AlertDialog
+import android.widget.Spinner
+import android.widget.AdapterView
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth // Declare FirebaseAuth
-    private lateinit var db: FirebaseFirestore // Declare Firestore
+    // Firebase authentication instance
+    private lateinit var auth: FirebaseAuth
 
+    // UI elements, now matching the IDs in your XML layout
+    private lateinit var backButton: TextView
+    private lateinit var studentEmployeeNumberInput: EditText
+    private lateinit var fullNameInput: EditText
+    private lateinit var userTypeSpinner: Spinner // Corrected to Spinner
+    private lateinit var gradeInput: EditText
+    private lateinit var roomInput: EditText
     private lateinit var emailInput: EditText
     private lateinit var passwordInput: EditText
-    private lateinit var confirmPasswordInput: EditText
-    private lateinit var registerButton: Button
+    private lateinit var confirmPasswordInput: EditText // Added for the confirm password field
+    private lateinit var termsCheckbox: CheckBox
+    private lateinit var signUpButton: Button
     private lateinit var loginRedirectText: TextView
-    private lateinit var fullNameInput: EditText
-    private lateinit var studentEmployeeNumberInput: EditText
-    private lateinit var userTypeSpinner: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        // Wrap the entire onCreate logic in a try-catch to catch any unexpected runtime exceptions
+        try {
+            setContentView(R.layout.activity_register)
 
-        // Initialize Firebase instances
-        auth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance() // Initialize Firestore
+            // Initialize Firebase Auth
+            auth = FirebaseAuth.getInstance()
 
-        // Initialize UI elements
-        fullNameInput = findViewById(R.id.register_full_name)
-        studentEmployeeNumberInput = findViewById(R.id.register_student_employee_number)
-        userTypeSpinner = findViewById(R.id.register_user_type_spinner)
-        emailInput = findViewById(R.id.register_email)
-        passwordInput = findViewById(R.id.register_password)
-        confirmPasswordInput = findViewById(R.id.register_confirm_password)
-        registerButton = findViewById(R.id.register_button)
-        loginRedirectText = findViewById(R.id.login_text)
+            // Initialize all UI elements from the layout.
+            backButton = findViewById(R.id.back_button)
+            studentEmployeeNumberInput = findViewById(R.id.student_employee_number)
+            fullNameInput = findViewById(R.id.full_name)
+            userTypeSpinner = findViewById(R.id.item1) // Initialized as a Spinner
+            gradeInput = findViewById(R.id.grade)
+            roomInput = findViewById(R.id.room)
+            emailInput = findViewById(R.id.email)
+            passwordInput = findViewById(R.id.password)
+            confirmPasswordInput = findViewById(R.id.confirm_password)
+            termsCheckbox = findViewById(R.id.terms_checkbox)
+            signUpButton = findViewById(R.id.sign_up_button)
+            loginRedirectText = findViewById(R.id.login_redirect_text)
 
-        // --- Start of code to style the "Login" text ---
-        val fullText = "Already have an account? Login"
-        val loginWord = "Login"
+            // Set click listener for the "Back" button
+            backButton.setOnClickListener {
+                finish()
+            }
 
-        val startIndex = fullText.indexOf(loginWord)
-        val endIndex = startIndex + loginWord.length
+            // Set click listener for the "SIGN UP" button
+            signUpButton.setOnClickListener {
+                val studentEmployeeNumber = studentEmployeeNumberInput.text.toString()
+                val fullName = fullNameInput.text.toString()
+                val userType = userTypeSpinner.selectedItem.toString()
+                val grade = gradeInput.text.toString()
+                val room = roomInput.text.toString()
+                val email = emailInput.text.toString().trim()
+                val password = passwordInput.text.toString().trim()
+                val confirmPassword = confirmPasswordInput.text.toString().trim()
 
-        if (startIndex != -1) {
-            val spannableString = SpannableString(fullText)
+                // Validate that no fields are empty
+                if (email.isEmpty() || password.isEmpty() || studentEmployeeNumber.isEmpty() ||
+                    fullName.isEmpty() || userTypeSpinner.selectedItemPosition == 0 ||
+                    grade.isEmpty() || room.isEmpty() || confirmPassword.isEmpty()) {
+                    Toast.makeText(this, getString(R.string.toast_fill_all_fields), Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
 
-            // Apply bold style
-            spannableString.setSpan(StyleSpan(Typeface.BOLD), startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                // Check if passwords match
+                if (password != confirmPassword) {
+                    Toast.makeText(this, getString(R.string.toast_passwords_do_not_match), Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
 
-            // Apply blue color using ContextCompat for compatibility
-            spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(this, R.color.blue)), startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                // Check if terms and conditions are accepted
+                if (!termsCheckbox.isChecked) {
+                    Toast.makeText(this, "Please agree to the terms and conditions.", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
 
-            // Set the styled text to the TextView
-            loginRedirectText.text = spannableString
-        }
-        // --- End of code to style the "Login" text ---
+                // Create a new user with Firebase Authentication
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task: Task<AuthResult> ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this, getString(R.string.toast_account_created), Toast.LENGTH_SHORT).show()
+                            // Redirect to the LoginActivity after successful registration
+                            val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            // Log the error for better debugging
+                            Log.e("RegisterActivity", "Authentication failed: ", task.exception)
+                            Toast.makeText(this, "Authentication failed. " + task.exception?.message, Toast.LENGTH_LONG).show()
+                        }
+                    }
+            }
 
-        registerButton.setOnClickListener {
-            registerUser()
-        }
+            // Set click listener for the "Log In" redirect text
+            loginRedirectText.setOnClickListener {
+                val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
 
-        loginRedirectText.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+        } catch (e: Exception) {
+            // This catch block will help us find the root cause if it's not a simple NullPointerException.
+            // The Logcat will show the full stack trace.
+            Log.e("RegisterActivity", "An unexpected error occurred during activity creation: ${e.message}", e)
+            Toast.makeText(this, "An unexpected error occurred. Please try again.", Toast.LENGTH_LONG).show()
         }
     }
 
-    private fun registerUser() {
-        // Get values from all fields
-        val fullName = fullNameInput.text.toString().trim()
-        val studentEmployeeNumber = studentEmployeeNumberInput.text.toString().trim()
-        val userType = userTypeSpinner.selectedItem.toString().trim()
-        val email = emailInput.text.toString().trim()
-        val password = passwordInput.text.toString().trim()
-        val confirmPassword = confirmPasswordInput.text.toString().trim()
+    /**
+     * This function is called when the "terms and conditions" TextView is clicked.
+     * It displays a dialog with the full terms and conditions text.
+     */
+    fun showTermsAndConditionsDialog(view: View) {
+        // Create a custom view for the dialog to make the content scrollable
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_terms_and_conditions, null)
+        val termsTextView: TextView = dialogView.findViewById(R.id.terms_dialog_text)
+        termsTextView.text = resources.getString(R.string.terms_and_conditions_content)
+        termsTextView.movementMethod = LinkMovementMethod.getInstance()
 
-        // Basic validation
-        if (fullName.isEmpty() || studentEmployeeNumber.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || userType == getString(R.string.select_user_type_default)) {
-            Toast.makeText(this, getString(R.string.toast_fill_all_fields), Toast.LENGTH_SHORT).show()
-            return
-        } else if (password != confirmPassword) {
-            Toast.makeText(this, getString(R.string.toast_passwords_do_not_match), Toast.LENGTH_SHORT).show()
-            return
-        } else if (password.length < 6) { // Firebase requires at least 6 characters for password
-            Toast.makeText(this, "Password must be at least 6 characters long.", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        // Show loading indicator
-        Toast.makeText(this, "Registering...", Toast.LENGTH_SHORT).show()
-
-        // Firebase registration logic
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // User registered successfully in Firebase Auth
-                    val firebaseUser = auth.currentUser
-                    if (firebaseUser != null) {
-                        // Save additional user data to Firestore
-                        val userData = hashMapOf(
-                            "fullName" to fullName,
-                            "studentEmployeeNumber" to studentEmployeeNumber,
-                            "userType" to userType,
-                            "email" to email,
-                            "uid" to firebaseUser.uid // Store Firebase UID
-                        )
-
-                        db.collection("users").document(firebaseUser.uid)
-                            .set(userData)
-                            .addOnSuccessListener {
-                                Toast.makeText(this, getString(R.string.toast_account_created), Toast.LENGTH_SHORT).show()
-                                // Redirect to LoginActivity after successful registration and data save
-                                startActivity(Intent(this, LoginActivity::class.java))
-                                finish()
-                            }
-                            .addOnFailureListener { e ->
-                                Toast.makeText(this, "Failed to save user data: ${e.message}", Toast.LENGTH_LONG).show()
-                                // Optionally, delete the Firebase Auth user if Firestore save fails
-                                firebaseUser.delete()
-                            }
-                    }
-                } else {
-                    // Registration failed
-                    Toast.makeText(this, "Registration failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
-                }
+        AlertDialog.Builder(this)
+            .setTitle(R.string.terms_and_conditions_title)
+            .setView(dialogView)
+            .setPositiveButton(R.string.ok_button) { dialog, which ->
+                dialog.dismiss()
             }
+            .show()
     }
 }
