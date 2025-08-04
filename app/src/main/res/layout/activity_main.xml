@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_blue_bg"
     tools:context=".MainActivity">
 
-    <!-- AppBarLayout to contain the Toolbar -->
+    <!-- App Bar with Toolbar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,38 +23,35 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- FrameLayout to hold fragments -->
-    <!-- It now extends to the bottom as there's no BottomNavigationView -->
+    <!-- Main content container for fragments -->
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <!-- Floating Action Button for Emergency (existing) -->
+    <!-- Emergency Button Floating Action Button, positioned on the bottom right -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/emergency_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:src="@drawable/emergency_icon"
-        app:backgroundTint="#EF5350"
-        app:fabSize="normal"
-        android:contentDescription="Emergency Button" />
+        android:contentDescription="Emergency Button"
+        android:backgroundTint="@color/blue_500"
+        app:tint="@null"
+        app:srcCompat="@drawable/emergency" />
 
-    <!-- NEW: Central "Go" Floating Action Button -->
+    <!-- Go Button Floating Action Button, positioned on the bottom center -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/go_button_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
-        android:layout_margin="16dp"
-        android:src="@drawable/main_menu"
-        app:fabSize="normal"
-        android:contentDescription="Go to Options"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Fab" />
-
-    <!-- REMOVED: Bottom Navigation View -->
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Go Button"
+        android:backgroundTint="@color/blue_500"
+        app:tint="@null"
+        app:srcCompat="@drawable/main_menu" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

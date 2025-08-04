@@ -14,43 +14,49 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import androidx.appcompat.app.AlertDialog
 import android.widget.Spinner
 import android.widget.AdapterView
+import android.text.method.LinkMovementMethod
 
 class RegisterActivity : AppCompatActivity() {
 
     // Firebase authentication instance
     private lateinit var auth: FirebaseAuth
 
-    // UI elements, now matching the IDs in your XML layout
+    // Firestore database instance
+    private lateinit var db: FirebaseFirestore
+
+    // UI elements
     private lateinit var backButton: TextView
     private lateinit var studentEmployeeNumberInput: EditText
     private lateinit var fullNameInput: EditText
-    private lateinit var userTypeSpinner: Spinner // Corrected to Spinner
+    private lateinit var userTypeSpinner: Spinner
     private lateinit var gradeInput: EditText
     private lateinit var roomInput: EditText
     private lateinit var emailInput: EditText
     private lateinit var passwordInput: EditText
-    private lateinit var confirmPasswordInput: EditText // Added for the confirm password field
+    private lateinit var confirmPasswordInput: EditText
     private lateinit var termsCheckbox: CheckBox
     private lateinit var signUpButton: Button
     private lateinit var loginRedirectText: TextView
+    private lateinit var termsText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Wrap the entire onCreate logic in a try-catch to catch any unexpected runtime exceptions
         try {
             setContentView(R.layout.activity_register)
 
-            // Initialize Firebase Auth
+            // Initialize Firebase instances
             auth = FirebaseAuth.getInstance()
+            db = FirebaseFirestore.getInstance()
 
-            // Initialize all UI elements from the layout.
+            // Initialize UI elements
             backButton = findViewById(R.id.back_button)
             studentEmployeeNumberInput = findViewById(R.id.student_employee_number)
             fullNameInput = findViewById(R.id.full_name)
-            userTypeSpinner = findViewById(R.id.item1) // Initialized as a Spinner
+            userTypeSpinner = findViewById(R.id.item1)
             gradeInput = findViewById(R.id.grade)
             roomInput = findViewById(R.id.room)
             emailInput = findViewById(R.id.email)
@@ -59,13 +65,13 @@ class RegisterActivity : AppCompatActivity() {
             termsCheckbox = findViewById(R.id.terms_checkbox)
             signUpButton = findViewById(R.id.sign_up_button)
             loginRedirectText = findViewById(R.id.login_redirect_text)
+            termsText = findViewById(R.id.terms_text) // New: Find the terms TextView
 
-            // Set click listener for the "Back" button
+            // Set up click listeners
             backButton.setOnClickListener {
                 finish()
             }
 
-            // Set click listener for the "SIGN UP" button
             signUpButton.setOnClickListener {
                 val studentEmployeeNumber = studentEmployeeNumberInput.text.toString()
                 val fullName = fullNameInput.text.toString()
@@ -76,7 +82,6 @@ class RegisterActivity : AppCompatActivity() {
                 val password = passwordInput.text.toString().trim()
                 val confirmPassword = confirmPasswordInput.text.toString().trim()
 
-                // Validate that no fields are empty
                 if (email.isEmpty() || password.isEmpty() || studentEmployeeNumber.isEmpty() ||
                     fullName.isEmpty() || userTypeSpinner.selectedItemPosition == 0 ||
                     grade.isEmpty() || room.isEmpty() || confirmPassword.isEmpty()) {
@@ -84,55 +89,79 @@ class RegisterActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-                // Check if passwords match
                 if (password != confirmPassword) {
                     Toast.makeText(this, getString(R.string.toast_passwords_do_not_match), Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
 
-                // Check if terms and conditions are accepted
                 if (!termsCheckbox.isChecked) {
-                    Toast.makeText(this, "Please agree to the terms and conditions.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.toast_agree_terms_and_conditions), Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
 
-                // Create a new user with Firebase Authentication
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task: Task<AuthResult> ->
                         if (task.isSuccessful) {
-                            Toast.makeText(this, getString(R.string.toast_account_created), Toast.LENGTH_SHORT).show()
-                            // Redirect to the LoginActivity after successful registration
-                            val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-                            startActivity(intent)
-                            finish()
+                            // Account created successfully. Now save additional user data to Firestore.
+                            val userId = auth.currentUser?.uid
+                            if (userId != null) {
+                                // Create a user map to store in Firestore
+                                val user = hashMapOf(
+                                    "uid" to userId,
+                                    "email" to email,
+                                    "studentEmployeeNumber" to studentEmployeeNumber,
+                                    "fullName" to fullName,
+                                    "userType" to userType,
+                                    "grade" to grade,
+                                    "room" to room
+                                )
+
+                                // Save the user data to a Firestore collection named "users"
+                                db.collection("users").document(userId)
+                                    .set(user)
+                                    .addOnSuccessListener {
+                                        Log.d("RegisterActivity", "User data successfully written!")
+                                        Toast.makeText(this, getString(R.string.toast_account_created), Toast.LENGTH_SHORT).show()
+                                        // Navigate to the next activity after data is saved
+                                        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                                        startActivity(intent)
+                                        finish()
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Log.w("RegisterActivity", "Error writing user data", e)
+                                        Toast.makeText(this, "Failed to save user data. Please try again.", Toast.LENGTH_LONG).show()
+                                        // You may want to delete the user from auth if saving data fails.
+                                    }
+                            }
                         } else {
-                            // Log the error for better debugging
                             Log.e("RegisterActivity", "Authentication failed: ", task.exception)
                             Toast.makeText(this, "Authentication failed. " + task.exception?.message, Toast.LENGTH_LONG).show()
                         }
                     }
             }
 
-            // Set click listener for the "Log In" redirect text
             loginRedirectText.setOnClickListener {
                 val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
             }
 
+            // Set up a click listener for the terms and conditions text.
+            // This is a more robust way than using android:onClick in XML.
+            termsText.setOnClickListener {
+                showTermsAndConditionsDialog()
+            }
+
         } catch (e: Exception) {
-            // This catch block will help us find the root cause if it's not a simple NullPointerException.
-            // The Logcat will show the full stack trace.
             Log.e("RegisterActivity", "An unexpected error occurred during activity creation: ${e.message}", e)
             Toast.makeText(this, "An unexpected error occurred. Please try again.", Toast.LENGTH_LONG).show()
         }
     }
 
     /**
-     * This function is called when the "terms and conditions" TextView is clicked.
-     * It displays a dialog with the full terms and conditions text.
+     * This function displays a dialog with the full terms and conditions text.
      */
-    fun showTermsAndConditionsDialog(view: View) {
+    private fun showTermsAndConditionsDialog() {
         // Create a custom view for the dialog to make the content scrollable
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_terms_and_conditions, null)
         val termsTextView: TextView = dialogView.findViewById(R.id.terms_dialog_text)

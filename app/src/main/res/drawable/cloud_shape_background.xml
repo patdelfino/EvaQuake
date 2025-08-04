@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- This item is a simple rectangle shape, and it is correct -->
     <item>
         <shape android:shape="rectangle">
             <solid android:color="@color/dark_blue_bg" />
         </shape>
     </item>
-    <item android:top="0dp">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/dark_blue_bg" />
-            <corners
-                android:bottomLeftRadius="0dp"
-                android:bottomRightRadius="0dp"
-                android:topLeftRadius="0dp"
-                android:topRightRadius="0dp" />
-            <path android:fillColor="@color/dark_blue_bg">
-                <path android:pathData="M0,0 L0,100 Q50,150 100,100 L100,0 Z" />
-            </path>
-        </shape>
+
+    <!-- This item contains the custom path, so it must be a vector drawable -->
+    <item>
+        <vector
+            android:width="100dp"
+            android:height="150dp"
+            android:viewportWidth="100"
+            android:viewportHeight="150">
+            <!-- The path tag is now a direct child of the vector tag -->
+            <path
+                android:fillColor="@color/dark_blue_bg"
+                android:pathData="M0,0 L0,100 Q50,150 100,100 L100,0 Z" />
+        </vector>
     </item>
 </layer-list>

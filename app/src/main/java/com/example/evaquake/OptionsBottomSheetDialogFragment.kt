@@ -1,60 +1,92 @@
 package com.example.evaquake
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.cardview.widget.CardView
+import com.example.evaquake.databinding.FragmentOptionsBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
+/**
+ * A BottomSheetDialogFragment that displays options for 3D modeling and AR guide.
+ * It uses a listener interface to communicate user selections back to the hosting Fragment.
+ */
 class OptionsBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
-    // Interface to communicate back to MainActivity
-    interface OptionsListener {
-        fun onOptionSelected(optionId: Int)
-    }
+    // View binding is used to access views in the layout
+    private var _binding: FragmentOptionsBottomSheetBinding? = null
+    private val binding get() = _binding!!
 
+    // Listener to communicate selected option back to the parent Fragment
     private var optionsListener: OptionsListener? = null
 
-    // Companion object for option IDs
+    // Companion object to hold constant IDs for the options
     companion object {
         const val OPTION_3D_MODEL = 1
         const val OPTION_AR_GUIDE = 2
     }
 
+    /**
+     * Interface for the host Fragment to implement, allowing it to receive
+     * callbacks when an option is selected.
+     */
+    interface OptionsListener {
+        fun onOptionSelected(optionId: Int)
+    }
+
+    // This method is called to inflate the layout for the bottom sheet
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_options_bottom_sheet, container, false)
+    ): View {
+        _binding = FragmentOptionsBottomSheetBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        // Set up click listeners for the options
-        view.findViewById<CardView>(R.id.option_3d_model).setOnClickListener {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Set click listener for the 3D Model card
+        binding.option3dModel.setOnClickListener {
+            // Notify the listener that the 3D model option was selected
             optionsListener?.onOptionSelected(OPTION_3D_MODEL)
-            dismiss() // Dismiss the bottom sheet after selection
+            // Dismiss the bottom sheet after the option is selected
+            dismiss()
         }
 
-        view.findViewById<CardView>(R.id.option_ar_guide).setOnClickListener {
+        // Set click listener for the AR Guide card
+        binding.optionArGuide.setOnClickListener {
+            // Notify the listener that the AR guide option was selected
             optionsListener?.onOptionSelected(OPTION_AR_GUIDE)
-            dismiss() // Dismiss the bottom sheet after selection
+            // Dismiss the bottom sheet after the option is selected
+            dismiss()
         }
-
-        return view
     }
 
-    // Attach the listener when the fragment is attached to the activity
-    override fun onAttach(context: android.content.Context) {
+    // onAttach is called when the fragment is attached to its context
+    override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is OptionsListener) {
-            optionsListener = context
+        // Check if the host Fragment implements the OptionsListener interface
+        if (parentFragment is OptionsListener) {
+            optionsListener = parentFragment as OptionsListener
         } else {
-            throw RuntimeException("$context must implement OptionsListener")
+            // If the parent Fragment doesn't implement the interface, log a warning
+            // instead of throwing an exception. This prevents the app from crashing.
+            Log.e("OptionsBottomSheet", "Parent Fragment must implement OptionsListener")
         }
     }
 
-    // Detach the listener when the fragment is detached
+    // onDetach is called when the fragment is no longer attached to its activity
     override fun onDetach() {
         super.onDetach()
         optionsListener = null
+    }
+
+    // This method is called when the fragment's view is being destroyed
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -1,103 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@drawable/rounded_bottom_sheet_background"> <!-- Create this drawable -->
+    android:padding="24dp"
+    android:background="@drawable/rounded_bottom_sheet_background">
 
+    <!-- Title for the bottom sheet -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Choose an Option"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="#333333"
+        android:textColor="?attr/colorOnSurface"
         android:gravity="center"
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/helvetica_neue_medium" />
 
+    <!-- Horizontal LinearLayout to hold the option cards side-by-side -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="16dp">
+        android:gravity="center">
 
-        <!-- 3D Model Option -->
-        <androidx.cardview.widget.CardView
+        <!-- 3D Model Option Card -->
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/option_3d_model"
             android:layout_width="0dp"
-            android:layout_height="120dp"
+            android:layout_height="160dp"
             android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="#ADD1EF">
+            android:layout_marginEnd="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#D4E6F1"
+            app:strokeWidth="1dp"
+            app:strokeColor="#A0B8C8">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:padding="8dp"
+                android:padding="16dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:background="?android:attr/selectableItemBackground">
 
+                <!-- 3D Model Icon -->
                 <ImageView
-                    android:layout_width="90dp"
-                    android:layout_height="69dp"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
                     android:contentDescription="3D Model Icon"
-                    android:src="@drawable/model_threed" />
+                    android:src="@drawable/model_threed"
+                    android:layout_marginBottom="8dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="3D Model"
-                    android:textColor="@color/dark_grey"
+                    android:textColor="?attr/colorOnSurface"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/helvetica_neue_medium" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <!-- AR Guide Option -->
-        <androidx.cardview.widget.CardView
+        <!-- AR Guide Option Card -->
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/option_ar_guide"
             android:layout_width="0dp"
-            android:layout_height="120dp"
+            android:layout_height="160dp"
             android:layout_weight="1"
-            android:layout_marginStart="8dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="#ADD1EF">
+            android:layout_marginStart="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#D4E6F1"
+            app:strokeWidth="1dp"
+            app:strokeColor="#A0B8C8">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:padding="8dp"
+                android:padding="16dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:background="?android:attr/selectableItemBackground">
+
+                <!-- AR Guide Icon -->
                 <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
                     android:src="@drawable/scan_icon"
-                    android:contentDescription="AR Guide Icon" />
+                    android:contentDescription="AR Guide Icon"
+                    android:layout_marginBottom="8dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="AR Guide"
-                    android:textColor="@color/dark_grey"
+                    android:textColor="?attr/colorOnSurface"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/helvetica_neue_medium" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
-
 </LinearLayout>

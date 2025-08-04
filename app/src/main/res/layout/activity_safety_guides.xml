@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This is the updated Android XML layout file, with improved spacing,
+     larger fonts, and a more professional look. -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4674B2"
+    tools:context=".SafetyGuidesActivity">
+
+    <!-- This view acts as the white, rounded background at the bottom of the screen. -->
+    <View
+        android:id="@+id/bottomBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bottom_rounded_white_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.6" />
+
+    <!-- A ScrollView is used to ensure the content is scrollable and has ample padding. -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Top header section containing the back button and title -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="32dp">
+
+                <!-- Back button with text. Increased padding for better touch target. -->
+                <TextView
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Back"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/helvetica_neue_family"
+                    app:drawableStartCompat="@drawable/baseline_arrow_back_24" />
+
+                <!-- A Spacer to push the title to the center -->
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Safety Guides"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/helvetica_neue_family" />
+
+                <!-- A Spacer to balance the layout -->
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <!-- Placeholder for the 3D cube icon -->
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/main_graphicc"
+                android:contentDescription="@string/earthquake_icon_description"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Main title text with a larger, bolder font -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stay Safe During Earthquakes"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Subtitle/description text with increased font size -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Learn essential safety tips through interactive guides"
+                android:textColor="#A4B3E0"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:fontFamily="@font/helvetica_neue_family"
+                android:layout_marginBottom="32dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+
+            <!-- Card for "Before an Earthquake" section -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/beforeCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Header of the collapsible card with increased padding -->
+                    <RelativeLayout
+                        android:id="@+id/beforeHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp">
+
+                        <!-- Icon for the card section -->
+                        <ImageView
+                            android:id="@+id/beforeIcon"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/home"
+                            android:background="@drawable/rounded_icon_background"
+                            android:backgroundTint="#FFF2E0"
+                            android:padding="8dp"
+                            android:contentDescription="@string/before_earthquake_icon_description" />
+
+                        <!-- Title and subtitle of the card with larger fonts -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_toEndOf="@id/beforeIcon"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Before an Earthquake"
+                                android:textColor="@android:color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/helvetica_neue_family" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Preparation is key to safety"
+                                android:textColor="#888888"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/helvetica_neue_family" />
+                        </LinearLayout>
+
+                        <!-- Dropdown arrow icon (initially pointing down) -->
+                        <ImageView
+                            android:id="@+id/beforeArrow"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/dropdown"
+                            android:contentDescription="@string/dropdown_arrow_description" />
+                    </RelativeLayout>
+
+                    <!-- The collapsible section for the tips, initially hidden -->
+                    <LinearLayout
+                        android:id="@+id/beforeTipsContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="20dp"
+                        android:visibility="gone">
+
+                        <!-- Tip 1: "Know the safe spots..." with improved padding -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#F8F9FA">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="16dp"
+                                android:gravity="center_vertical">
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/safety_spot"
+                                    android:background="@drawable/rounded_icon_background"
+                                    android:backgroundTint="#FFF2E0"
+                                    android:padding="6dp"
+                                    android:contentDescription="Safe spot icon" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:text="Know the safe spots in each room: under sturdy tables, desks, or against inside walls."
+                                    android:textColor="#333333"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/helvetica_neue_family"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- Tip 2: "Know the danger spots..." with improved padding -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#F8F9FA">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="16dp"
+                                android:gravity="center_vertical">
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/danger_icon"
+                                    android:background="@drawable/rounded_icon_background"
+                                    android:backgroundTint="#FFEBEE"
+                                    android:padding="6dp"
+                                    android:contentDescription="Danger spot icon" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:text="Know the danger spots: windows, mirrors, hanging objects, fireplaces and tall, unsecured furniture."
+                                    android:textColor="#333333"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/helvetica_neue_family"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- Tip 3: "Secure heavy furniture..." with improved padding -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#F8F9FA">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="16dp"
+                                android:gravity="center_vertical">
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/toolbox"
+                                    android:background="@drawable/rounded_icon_background"
+                                    android:backgroundTint="#FFF2E0"
+                                    android:padding="6dp"
+                                    android:contentDescription="Tool box icon" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:text="Secure heavy furniture, hanging plants, heavy pictures or mirrors."
+                                    android:textColor="#333333"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/helvetica_neue_family"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- Tip 4: "Maintain emergency food..." with improved padding -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#F8F9FA">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="16dp"
+                                android:gravity="center_vertical">
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/first_aid_kit"
+                                    android:background="@drawable/rounded_icon_background"
+                                    android:backgroundTint="#E8F5E9"
+                                    android:padding="6dp"
+                                    android:contentDescription="First aid kit icon" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:text="Maintain emergency food, water and other supplies, including a flashlight, a portable battery-operated radio, extra batteries, medicines, first aid kit and clothing."
+                                    android:textColor="#333333"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/helvetica_neue_family"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card for "During an Earthquake" section -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/duringCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Header of the expanded card with increased padding -->
+                    <RelativeLayout
+                        android:id="@+id/duringHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp">
+
+                        <ImageView
+                            android:id="@+id/duringIcon"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/earthquake_ic"
+                            android:background="@drawable/rounded_icon_background"
+                            android:backgroundTint="#FFF2E0"
+                            android:padding="8dp"
+                            android:contentDescription="@string/during_earthquake_icon_description" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_toEndOf="@id/duringIcon"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="During an Earthquake"
+                                android:textColor="@android:color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/helvetica_neue_family" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Quick actions save lives"
+                                android:textColor="#888888"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/helvetica_neue_family" />
+                        </LinearLayout>
+
+                        <!-- Dropdown arrow (pointing up for the expanded state) -->
+                        <ImageView
+                            android:id="@+id/duringArrow"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/dropdown"
+                            android:contentDescription="@string/dropdown_arrow_description" />
+                    </RelativeLayout>
+
+                    <!-- The section for the tips, initially visible in this example -->
+                    <LinearLayout
+                        android:id="@+id/duringTipsContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="20dp"
+                        android:visibility="visible">
+
+                        <!-- Tip 1: "Drop, Cover, and Hold On!" with improved padding -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#F8F9FA">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="16dp"
+                                android:gravity="center_vertical">
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/drop_cover_hold"
+                                    android:background="@drawable/rounded_icon_background"
+                                    android:backgroundTint="#E3F2FD"
+                                    android:padding="6dp"
+                                    android:contentDescription="Shield icon" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:text="Drop, Cover, and Hold On: Get under a sturdy desk or table, hold on, and protect your head and neck."
+                                    android:textColor="#333333"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/helvetica_neue_family"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- Tip 2: "Stay Away from Windows..." with improved padding -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#F8F9FA">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="16dp"
+                                android:gravity="center_vertical">
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/keep_out"
+                                    android:background="@drawable/rounded_icon_background"
+                                    android:backgroundTint="#FFEBEE"
+                                    android:padding="6dp"
+                                    android:contentDescription="Window close icon" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:text="Stay Away from Windows and Heavy Objects: Face away from windows, glass, and anything that could fall, like shelves or equipment."
+                                    android:textColor="#333333"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/helvetica_neue_family"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- Tip 3: "Remain in Place Until Shaking Stops..." with improved padding -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#F8F9FA">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="16dp"
+                                android:gravity="center_vertical">
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/stay"
+                                    android:background="@drawable/rounded_icon_background"
+                                    android:backgroundTint="#E8F5E9"
+                                    android:padding="6dp"
+                                    android:contentDescription="Person stop icon" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:text="Remain in Place Until Shaking Stops: Do not run outside—stay under cover and wait for the shaking to stop completely."
+                                    android:textColor="#333333"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/helvetica_neue_family"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- Tip 4: "Evacuate Safely if Needed..." with improved padding -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#F8F9FA">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="16dp"
+                                android:gravity="center_vertical">
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/evacuate"
+                                    android:background="@drawable/rounded_icon_background"
+                                    android:backgroundTint="#E8EAF6"
+                                    android:padding="6dp"
+                                    android:contentDescription="Exit icon" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:text="Evacuate Safely if Needed: Once the shaking stops, follow your teacher’s instructions and calmly exit the building using designated evacuation routes."
+                                    android:textColor="#333333"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/helvetica_neue_family"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card for "After an Earthquake" section -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/afterCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Header of the collapsible card with increased padding -->
+                    <RelativeLayout
+                        android:id="@+id/afterHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp">
+
+                        <ImageView
+                            android:id="@+id/afterIcon"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/after_earthquake"
+                            android:background="@drawable/rounded_icon_background"
+                            android:backgroundTint="#E8F5E9"
+                            android:padding="8dp"
+                            android:contentDescription="@string/after_earthquake_icon_description" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_toEndOf="@id/afterIcon"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="After an Earthquake"
+                                android:textColor="@android:color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/helvetica_neue_family" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Check for injuries, stay safe"
+                                android:textColor="#888888"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/helvetica_neue_family" />
+                        </LinearLayout>
+
+                        <!-- Dropdown arrow icon (initially pointing down) -->
+                        <ImageView
+                            android:id="@+id/afterArrow"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/dropdown"
+                            android:contentDescription="@string/dropdown_arrow_description" />
+                    </RelativeLayout>
+
+                    <!-- The collapsible section for the tips, initially hidden -->
+                    <LinearLayout
+                        android:id="@+id/afterTipsContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="20dp"
+                        android:visibility="gone">
+
+                        <!-- Tip 1: "Assess the situation and check..." -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#F8F9FA">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="16dp"
+                                android:gravity="center_vertical">
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/assess"
+                                    android:background="@drawable/rounded_icon_background"
+                                    android:backgroundTint="#F0F4C3"
+                                    android:padding="6dp"
+                                    android:contentDescription="Assess icon" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:text="Assess the situation and check yourself and others for injuries. Administer first aid if necessary."
+                                    android:textColor="#333333"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/helvetica_neue_family"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- Tip 2: "Check for Hazards..." -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#F8F9FA">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="16dp"
+                                android:gravity="center_vertical">
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/warning"
+                                    android:background="@drawable/rounded_icon_background"
+                                    android:backgroundTint="#E3F2FD"
+                                    android:padding="6dp"
+                                    android:contentDescription="Hazard icon" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:text="Check for Hazards: Look for gas leaks, damaged electrical wiring, and structural damage."
+                                    android:textColor="#333333"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/helvetica_neue_family"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- Tip 3: "Be Cautious of Aftershocks..." -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="0dp"
+                            app:cardBackgroundColor="#F8F9FA">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="16dp"
+                                android:gravity="center_vertical">
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:src="@drawable/danger_icon"
+                                    android:background="@drawable/rounded_icon_background"
+                                    android:backgroundTint="#FFEBEE"
+                                    android:padding="6dp"
+                                    android:contentDescription="Aftershock icon" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:text="Be Cautious of Aftershocks: Expect aftershocks and continue to drop, cover, and hold on if you feel them."
+                                    android:textColor="#333333"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/helvetica_neue_family"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- A final spacer to ensure content doesn't touch the bottom -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

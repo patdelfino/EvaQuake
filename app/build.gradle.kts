@@ -36,6 +36,12 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    // This block enables View Binding and Data Binding
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
 }
 
 dependencies {

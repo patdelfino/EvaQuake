@@ -35,53 +35,92 @@
     <string name="landing_i_have_account_button">I already have an account</string>
     <string name="landing_create_account_button">Create an account</string>
 
-    <!-- Home fragment content descriptions (added from new errors) -->
+    <!-- Home fragment content descriptions (added for new design) -->
     <string name="desc_safety_guides_icon">Safety Guides Icon</string>
     <string name="desc_about_earthquakes_icon">About Earthquakes Icon</string>
     <string name="desc_qr_scan_icon">QR Scan Icon</string>
     <string name="desc_emergency_icon">Emergency Contact Icon</string>
     <string name="desc_manage_schedule_icon">Manage Schedule Icon</string>
-
-    <!-- User types for the spinner -->
-    <string-array name="user_types_array">
-        <item>@string/select_user_type_default</item>
-        <item>Student</item>
-        <item>Teacher</item>
-    </string-array>
+    <string name="app_logo_description">App Logo</string>
+    <string name="desc_start_drill_fab">Start an emergency drill</string>
+    <string name="desc_go_to_schedule">Go to schedule</string>
 
     <!-- Terms and Conditions Dialog -->
     <string name="terms_and_conditions_title">EvaQuake – Terms and Conditions</string>
     <string name="ok_button">OK</string>
-
-    <!-- The actual content of the Terms and Conditions -->
     <string name="terms_and_conditions_content">
-        **Effective Date: [Insert Date]**
         \n\nBy registering for and using the EvaQuake mobile application, you agree to the following terms and conditions. Please read carefully.
-        \n\n**1. Purpose of the App**
+        \n\n1. Purpose of the App
         \n\nEvaQuake is intended for educational and training use only within Victorino Mapa High School. It includes a 3D model of the school, AR evacuation simulations, and student status tracking for earthquake drills.
-        \n\n**2. Eligibility**
+        \n\n2. Eligibility
         \n\nOnly authorized students, teachers, and school personnel may register. A valid Android device and school-issued ID or code are required to access the app.
-        \n\n**3. User Responsibilities**
+        \n\n3. User Responsibilities
         \n\nYou agree to:
-        \n* Provide accurate registration information.
-        \n* Use the app only for earthquake preparedness training.
-        \n* Follow all safety protocols during drills.
-        \n* Keep your account secure and confidential.
-        \n* Respect school property and QR markers used in AR activities.
-        \n\n**4. Data Collection and Privacy**
+        \n Provide accurate registration information.
+        \n Use the app only for earthquake preparedness training.
+        \n Follow all safety protocols during drills.
+        \n Keep your account secure and confidential.
+        \n Respect school property and QR markers used in AR activities.
+        \n\n4. Data Collection and Privacy
         \n\nEvaQuake collects limited data:
-        \n* Name, grade level, and section
-        \n* Drill participation status (safe, missing, in danger)
-        \n* Device location during drills (if enabled)
-        \n* Basic usage logs for system improvement
+        \n Name, grade level, and section
+        \n Drill participation status (safe, missing, in danger)
+        \n Device location during drills (if enabled)
+        \n Basic usage logs for system improvement
         \n\nAll data is used solely for educational and safety purposes within the school and will not be shared with third parties without consent.
-        \n\n**5. Limitations and Disclaimers**
+        \n\n5. Limitations and Disclaimers
         \n\nEvaQuake does not provide real-time seismic alerts and should not be relied on during actual emergencies. It is a simulation and learning tool only. The app is provided "as is," and the developers are not responsible for data loss, technical issues, or device damage.
-        \n\n**6. Intellectual Property**
+        \n\n6. Intellectual Property
         \n\nAll app content, including models and materials, is the property of the developers and Victorino Mapa High School. Copying, distributing, or altering any part of the app without permission is prohibited.
-        \n\n**7. Account Suspension or Termination**
+        \n\n7. Account Suspension or Termination
         \n\nViolations such as misuse, disruption of drills, or falsified information may result in account suspension or permanent removal by school authorities.
-        \n\n**8. Changes to Terms**
+        \n\n8. Changes to Terms
         \n\nTerms may be updated periodically. Continued use of the app indicates acceptance of the latest version.
     </string>
+
+    <!-- New Strings for the Safety Guides and Tips Layout -->
+    <string name="back_button_with_arrow">← Back</string>
+    <string name="title_safety_guides">Safety Guides</string>
+    <string name="main_title">Stay Safe During Earthquakes</string>
+    <string name="subtitle_description">Learn essential safety tips through interactive guides</string>
+
+    <!-- Content Descriptions for Safety Guide icons -->
+    <string name="earthquake_icon_description">A 3D cube icon representing the main topic.</string>
+    <string name="before_earthquake_icon_description">An icon representing preparedness before an earthquake.</string>
+    <string name="during_earthquake_icon_description">An icon representing actions to take during an earthquake.</string>
+    <string name="after_earthquake_icon_description">An icon representing actions to take after an earthquake.</string>
+    <string name="dropdown_arrow_description">A dropdown arrow icon to expand or collapse sections.</string>
+    <string name="safe_spot_icon_description">An icon of a person under a table, representing a safe spot.</string>
+    <string name="danger_spot_icon_description">An icon of a broken window, representing a danger spot.</string>
+    <string name="toolbox_icon_description">An icon of a toolbox, representing securing items.</string>
+    <string name="first_aid_kit_icon_description">An icon of a first aid kit, representing emergency supplies.</string>
+    <string name="shield_icon_description">An icon of a shield, representing dropping and covering for protection.</string>
+    <string name="window_close_icon_description">An icon representing staying away from windows.</string>
+    <string name="person_stop_icon_description">An icon representing staying in place until shaking stops.</string>
+    <string name="evacuate_icon_description">An icon representing an exit, for safe evacuation.</string>
+    <string name="calm_icon_description">An icon representing staying calm and being ready for aftershocks.</string>
+
+    <!-- Text strings for the 'Before an Earthquake' section -->
+    <string name="before_section_title">Before an Earthquake</string>
+    <string name="before_section_subtitle">Preparation is key to safety</string>
+    <string name="before_tip_1">Know the safe spots in each room: under sturdy tables, desks, or against inside walls.</string>
+    <string name="before_tip_2">Know the danger spots: windows, mirrors, hanging objects, fireplaces and tall, unsecured furniture.</string>
+    <string name="before_tip_3">Secure heavy furniture, hanging plants, heavy pictures or mirrors.</string>
+    <string name="before_tip_4">Maintain emergency food, water and other supplies, including a flashlight, a portable battery-operated radio, extra batteries, medicines, first aid kit and clothing.</string>
+
+    <!-- Text strings for the 'During an Earthquake' section -->
+    <string name="during_section_title">During an Earthquake</string>
+    <string name="during_section_subtitle">Quick actions save lives</string>
+    <string name="during_tip_1">Drop, Cover, and Hold On: Get under a sturdy desk or table, hold on, and protect your head and neck.</string>
+    <string name="during_tip_2">Stay Away from Windows and Heavy Objects: Face away from windows, glass, and anything that could fall, like shelves or equipment.</string>
+    <string name="during_tip_3">Remain in Place Until Shaking Stops: Do not run outside—stay under cover and wait for the shaking to stop completely.</string>
+    <string name="during_tip_4">Evacuate Safely if Needed: Once the shaking stops, follow your teacher’s instructions and calmly exit the building using designated evacuation routes.</string>
+
+    <!-- Text strings for the 'After an Earthquake' section -->
+    <string name="after_section_title">After an Earthquake</string>
+    <string name="after_section_subtitle">Check for injuries, stay safe</string>
+    <string name="after_tip_1">Check for Injuries: Help classmates if it\'s safe to do so and report injuries to a teacher—don’t move anyone seriously hurt unless they’re in immediate danger.</string>
+    <string name="after_tip_2">Stay Alert for Hazards: Watch for fire, gas leaks, or falling debris, and follow your teacher’s instructions—don’t touch electrical or damaged equipment.</string>
+    <string name="after_tip_3">Listen and Follow Directions: Stay with your class, listen for announcements, and be ready to evacuate or relocate if needed.</string>
+    <string name="after_tip_4">Stay Calm and Be Ready for Aftershocks: Stay away from damaged areas, stay calm, support others, and follow safety procedures during aftershocks.</string>
 </resources>

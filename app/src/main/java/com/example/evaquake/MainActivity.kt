@@ -11,13 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar // Import Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-// Removed import for BottomNavigationView as it's no longer used
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 
-class MainActivity : AppCompatActivity(), OptionsBottomSheetDialogFragment.OptionsListener { // Implement the interface
+// MainActivity implements the OptionsListener interface to handle callbacks from the Bottom Sheet
+class MainActivity : AppCompatActivity(), OptionsBottomSheetDialogFragment.OptionsListener {
 
-    // Removed bottomNavigation declaration
     private lateinit var emergencyButton: FloatingActionButton
     private lateinit var goButtonFab: FloatingActionButton // Declare the new FAB
 
@@ -44,15 +43,15 @@ class MainActivity : AppCompatActivity(), OptionsBottomSheetDialogFragment.Optio
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         // Optionally set a title for the toolbar
-        supportActionBar?.title = "Evaquake" // Or your app name
+        supportActionBar?.title = "Evaquake"
 
         initializeViews()
-        // Removed setupBottomNavigation() call
         setupEmergencyButton()
         setupGoButton() // Setup the new Go button
         requestPermissions()
 
         if (savedInstanceState == null) {
+            // Load the default fragment (HomeFragment) on initial launch
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, HomeFragment())
                 .commit()
@@ -60,12 +59,9 @@ class MainActivity : AppCompatActivity(), OptionsBottomSheetDialogFragment.Optio
     }
 
     private fun initializeViews() {
-        // Removed bottomNavigation initialization
         emergencyButton = findViewById(R.id.emergency_button)
         goButtonFab = findViewById(R.id.go_button_fab) // Initialize the new FAB
     }
-
-    // Removed setupBottomNavigation() function
 
     private fun setupEmergencyButton() {
         emergencyButton.setOnClickListener {
@@ -78,6 +74,7 @@ class MainActivity : AppCompatActivity(), OptionsBottomSheetDialogFragment.Optio
     private fun setupGoButton() {
         goButtonFab.setOnClickListener {
             val bottomSheet = OptionsBottomSheetDialogFragment()
+            // Pass the MainActivity instance as the listener to the bottom sheet
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
     }
